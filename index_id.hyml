@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Participant Login</title>
+    <script>
+        function checkBrowser() {
+            let userAgent = navigator.userAgent;
+            if (!userAgent.includes("Chrome")) {
+                alert("Please use Google Chrome to continue.");
+                return false;
+            }
+            return true;
+        }
+
+        function saveID() {
+            if (!checkBrowser()) {
+                return;
+            }
+            let participantID = document.getElementById("participantID").value;
+            if (participantID.trim() === "") {
+                alert("Please enter a valid Participant ID.");
+                return;
+            }
+            // Store in localStorage and redirect
+            localStorage.setItem("participantID", participantID);
+            window.location.href = "experiment.html";
+        }
+    </script>
+</head>
+<body>
+    <h2>Enter Your Participant ID</h2>
+    <input type="text" id="participantID" placeholder="Enter ID">
+    <button onclick="saveID()">Submit</button>
+</body>
+</html>
