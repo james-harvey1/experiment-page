@@ -4,51 +4,70 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Experiment Links</title>
-    <script>
-        function checkBrowser() {
-            var isChrome = !!window.chrome && (!!window.chrome.webstore || !!window.chrome.runtime);
-            if (!isChrome) {
-                alert("Please use Google Chrome to continue.");
-                window.location.href = "index.html"; // Redirect back to login page
-            }
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f4f4f9;
         }
-
-        function loadLinks() {
-            var participantID = localStorage.getItem("participantID");
-            if (!participantID) {
-                alert("Participant ID not found. Please enter your ID again.");
-                window.location.href = "index.html";
-                return;
-            }
-
-            // Define experiment links (replace with your actual links)
-            var experimentLinks = [
-                "https://pcibex.example.com/experiment1",
-                "https://pcibex.example.com/experiment2",
-                "https://pcibex.example.com/experiment3"
-            ];
-
-            var linkContainer = document.getElementById("linkContainer");
-            experimentLinks.forEach(function (link, index) {
-                var fullLink = link + "?id=" + encodeURIComponent(participantID);
-                var linkElement = document.createElement("a");
-                linkElement.href = fullLink;
-                linkElement.target = "_blank"; // Open in a new tab
-                linkElement.innerText = "Experiment " + (index + 1);
-                linkContainer.appendChild(linkElement);
-                linkContainer.appendChild(document.createElement("br"));
-            });
+        h1 {
+            text-align: center;
         }
-
-        window.onload = function () {
-            checkBrowser();
-            loadLinks();
-        };
-    </script>
+        .link-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .link-container a {
+            text-decoration: none;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            margin: 10px;
+            border-radius: 4px;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+        .link-container a:hover {
+            background-color: #45a049;
+        }
+    </style>
 </head>
 <body>
-    <h2>Welcome to the Experiment</h2>
-    <p>Click the links below to begin:</p>
-    <div id="linkContainer"></div>
+
+    <h1>Welcome, Participant</h1>
+    <p>Please choose one of the following experiment links to proceed:</p>
+
+    <div class="link-container">
+        <!-- Example experiment links -->
+        <a href="#" id="link1">Experiment 1</a>
+        <a href="#" id="link2">Experiment 2</a>
+        <a href="#" id="link3">Experiment 3</a>
+    </div>
+
+    <script>
+        // Function to get the participant ID from the URL query string
+        function getQueryParam(name) {
+            var urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+
+        // Extract the participant ID from the URL
+        var participantID = getQueryParam("participant_id");
+
+        // Ensure the participant ID is valid
+        if (participantID) {
+            // Append the participant ID to all experiment links
+            var experimentBaseUrl = "https://www.pcibex.net/experiment_url_here"; // Replace with actual base URL
+            document.getElementById("link1").href = experimentBaseUrl + "?participant_id=" + encodeURIComponent(participantID);
+            document.getElementById("link2").href = experimentBaseUrl + "?participant_id=" + encodeURIComponent(participantID);
+            document.getElementById("link3").href = experimentBaseUrl + "?participant_id=" + encodeURIComponent(participantID);
+        } else {
+            // If no valid participant ID, display an error
+            document.body.innerHTML = "<h1>Error: No Participant ID Found</h1><p>Please go back and enter a valid Participant ID.</p>";
+        }
+    </script>
+
 </body>
 </html>
