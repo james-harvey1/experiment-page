@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experiment Links</title>
+    <script>
+        function checkBrowser() {
+            var isChrome = !!window.chrome && (!!window.chrome.webstore || !!window.chrome.runtime);
+            if (!isChrome) {
+                alert("Please use Google Chrome to continue.");
+                window.location.href = "index.html"; // Redirect back to login page
+            }
+        }
+
+        function loadLinks() {
+            var participantID = localStorage.getItem("participantID");
+            if (!participantID) {
+                alert("Participant ID not found. Please enter your ID again.");
+                window.location.href = "index.html";
+                return;
+            }
+
+            // Define experiment links (replace with your actual links)
+            var experimentLinks = [
+                "https://pcibex.example.com/experiment1",
+                "https://pcibex.example.com/experiment2",
+                "https://pcibex.example.com/experiment3"
+            ];
+
+            var linkContainer = document.getElementById("linkContainer");
+            experimentLinks.forEach(function (link, index) {
+                var fullLink = link + "?id=" + encodeURIComponent(participantID);
+                var linkElement = document.createElement("a");
+                linkElement.href = fullLink;
+                linkElement.target = "_blank"; // Open in a new tab
+                linkElement.innerText = "Experiment " + (index + 1);
+                linkContainer.appendChild(linkElement);
+                linkContainer.appendChild(document.createElement("br"));
+            });
+        }
+
+        window.onload = function () {
+            checkBrowser();
+            loadLinks();
+        };
+    </script>
+</head>
+<body>
+    <h2>Welcome to the Experiment</h2>
+    <p>Click the links below to begin:</p>
+    <div id="linkContainer"></div>
+</body>
+</html>
