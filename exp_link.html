@@ -209,6 +209,14 @@
             processingSpeedLink.textContent = "Processing Speed Experiment";
             experimentLinksDiv.appendChild(processingSpeedLink);
 
+            // Processing Speed Experiment Link (Corrected URL format)
+            const processingSpeedLink = document.createElement('a');
+            const processingSpeedUrl = "https://farm.pcibex.net/r/ZszkxV/experiment.html"; // Your PCIbex URL
+            processingSpeedLink.href = `redirect.html?experiment=${encodeURIComponent(processingSpeedUrl)}`;
+            processingSpeedLink.textContent = "Processing Speed Experiment new tab";
+            processingSpeedLink.target = "_blank"; // Correct placement: set target of processingSpeedLink
+            experimentLinksDiv.appendChild(processingSpeedLink);
+
 
         }
     </script>
