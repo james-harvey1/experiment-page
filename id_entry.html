@@ -17,7 +17,7 @@
         .container {
             max-width: 400px;
             padding: 20px;
-            background-color: #f4f4f9; /* Light gray background for the container */
+            background-color: #f4f4f9;
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
@@ -36,7 +36,7 @@
         button {
             width: 100%;
             padding: 10px;
-            background-color: #E03A3E; /* Red */
+            background-color: #E03A3E;
             color: white;
             border: none;
             border-radius: 4px;
@@ -44,7 +44,7 @@
             transition: background-color 0.3s ease;
         }
         button:hover {
-            background-color: #C0292D; /* Darker red on hover */
+            background-color: #C0292D;
         }
         .error {
             color: red;
@@ -65,11 +65,9 @@
         .footer-left, .footer-right {
             text-align: center;
         }
-
         .footer-right {
-            margin-right: 20px; /* Adjust this value as needed */
+            margin-right: 20px;
         }
-
         .footer-left img, .footer-right img {
             max-width: 100px;
             height: auto;
@@ -83,7 +81,7 @@
                 text-align: center;
             }
             .footer-left, .footer-right {
-              margin-bottom: 10px;
+                margin-bottom: 10px;
             }
         }
     </style>
@@ -113,8 +111,8 @@
             }
 
             if (participantID) {
-                localStorage.setItem('participantId', participantID);
-                window.location.href = "exp_link.html";
+                localStorage.setItem('participantId', participantID); // Store ID *before* redirecting
+                window.location.href = "exp_link.html"; // Redirect *after* storing ID
             } else {
                 document.getElementById('error-message').style.display = 'block';
             }
@@ -123,6 +121,15 @@
         document.getElementById('participant-id').addEventListener('input', () => {
             document.getElementById('error-message').style.display = 'none';
         });
+
+                // Check for a stored ID and pre-fill if present (runs on page load)
+        const storedId = localStorage.getItem('participantId');
+        const idInput = document.getElementById('participant-id');
+
+        if (storedId) {
+            idInput.value = storedId;
+        }
+
     </script>
     <footer>
         <div class="footer-left">
