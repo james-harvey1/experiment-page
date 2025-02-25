@@ -5,45 +5,103 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Experiment Links</title>
     <style>
-        /* ... (your CSS styles) ... */
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        .link-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .link-container a {
+            text-decoration: none;
+            background-color: #E03A3E; /* Red */
+            color: white;
+            padding: 10px 20px;
+            margin: 10px;
+            border-radius: 4px;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+            display: inline-block;
+        }
+        .link-container a:hover {
+            background-color: #C0292D; /* Darker red on hover */
+        }
+        @media (max-width: 400px) {
+            .link-container a {
+                font-size: 14px;
+                padding: 8px 16px;
+            }
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .header h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        .header p {
+            font-style: italic;
+            color: #777;
+        }
+        footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: #f0f0f0;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .footer-left, .footer-right {
+            text-align: center;
+        }
+        .footer-left img, .footer-right img {
+            max-width: 100px;
+            height: auto;
+            display: block;
+            margin: 0 auto 5px;
+        }
+        @media (max-width: 600px) {
+            footer {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .footer-left, .footer-right {
+              margin-bottom: 10px;
+            }
+        }
     </style>
 </head>
 <body>
 
     <script>
-        // Browser Check (Chrome) - Stricter Version
         if (!navigator.userAgent.includes('Chrome')) {
             alert("Please use Google Chrome to access this page.");
-            window.location.href = "chrome_required.html"; // Redirect
-            throw new Error("Chrome Required"); // Stop execution
+            window.location.href = "chrome_required.html";
+            throw new Error("Chrome Required");
         }
 
-        const storedId = localStorage.getItem('participantId'); // Get ID from localStorage
+        const storedId = localStorage.getItem('participantId');
 
-        if (!storedId) { // Check if ID is present
+        if (!storedId) {
             alert("Participant ID not found. Please enter your ID.");
-            window.location.href = "id_entry.html"; // Redirect to ID entry page
+            window.location.href = "id_entry.html";
         } else {
-            document.write(`<h1>Welcome, Participant ${storedId}</h1>`); // Display welcome message
-            document.write("<p>Please choose one of the following experiment links to proceed:</p>");
-            document.write('<div class="link-container" id="experimentLinks"></div>'); // Container for links
+            document.write('<div class="header">');
+            document.write('<h1>Experimental Links</h1>');
+            document.write('<p>Please proceed to experiments as directed and do not move ahead.</p>');
+            document.write('</div>');
 
-            const experimentLinksDiv = document.getElementById('experimentLinks');
-            const experimentBaseUrl = "https://www.pcibex.net/experiment_url_here"; // **REPLACE WITH YOUR ACTUAL URL**
-            const numExperiments = 3;
+            document.write('<div class="link-container" id="experimentLinks"></div>');
 
-            // Generate experiment links dynamically
-            for (let i = 1; i <= numExperiments; i++) {
-                const link = document.createElement('a');
-                link.href = `${experimentBaseUrl}?participant_id=${encodeURIComponent(storedId)}`; // Add ID as query parameter
-                link.textContent = `Experiment ${i}`;
-                link.target = '_blank'; // Open in new tab
-                link.rel = "noopener noreferrer"; // Security best practice
-                experimentLinksDiv.appendChild(link);
-                experimentLinksDiv.appendChild(document.createElement('br')); // Add line break
-            }
-        }
-    </script>
-
-</body>
-</html>
+            const experimentLinksDiv = document
