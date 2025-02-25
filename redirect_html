@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Redirecting...</title>
+    <script>
+        const storedId = localStorage.getItem('participantId');
+        const urlParams = new URLSearchParams(window.location.search);
+        const experimentUrl = urlParams.get('experiment'); // Get the experiment URL
+
+        if (storedId && experimentUrl) {
+            const encodedId = encodeURIComponent(storedId);
+            const finalUrl = `${experimentUrl}?id=${encodedId}`;
+            window.location.href = finalUrl; // Redirect to PCIbex experiment
+        } else {
+            // Handle missing ID or URL (optional)
+            if (!storedId) {
+                alert("Participant ID not found. Please enter your ID first.");
+            } else if (!experimentUrl) {
+                alert("Experiment URL not found.");
+            } else {
+                alert("An error occurred during redirection."); // Generic error message
+            }
+            window.location.href = "id_entry.html"; // Or a dedicated error page
+        }
+    </script>
+</head>
+<body>
+    <p>Redirecting to the experiment...</p>
+</body>
+</html>
