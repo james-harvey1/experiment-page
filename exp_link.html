@@ -5,7 +5,81 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Experiment Links</title>
     <style>
-        /* ... (your CSS styles remain the same) ... */
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        .link-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .link-container a {
+            text-decoration: none;
+            background-color: #E03A3E; /* Red */
+            color: white;
+            padding: 10px 20px;
+            margin: 10px;
+            border-radius: 4px;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+            display: inline-block;
+        }
+        .link-container a:hover {
+            background-color: #C0292D; /* Darker red on hover */
+        }
+        @media (max-width: 400px) {
+            .link-container a {
+                font-size: 14px;
+                padding: 8px 16px;
+            }
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .header h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        .header p {
+            font-style: italic;
+            color: #777;
+        }
+        footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: #f0f0f0;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .footer-left, .footer-right {
+            text-align: center;
+        }
+        .footer-left img, .footer-right img {
+            max-width: 100px;
+            height: auto;
+            display: block;
+            margin: 0 auto 5px;
+        }
+        @media (max-width: 600px) {
+            footer {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .footer-left, .footer-right {
+                margin-bottom: 10px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -27,23 +101,45 @@
             const header = document.createElement('div');
             header.className = 'header';
             header.innerHTML = `<h1>Experimental Links</h1><p>Please proceed to experiments as directed and do not move ahead.</p>`;
-            document.body.appendChild(header); // Add to the body
+            document.body.appendChild(header);
 
             // Create link container dynamically
             const linkContainer = document.createElement('div');
             linkContainer.className = 'link-container';
             linkContainer.id = 'experimentLinks';
-            document.body.appendChild(linkContainer); // Add to the body
+            document.body.appendChild(linkContainer);
 
-            // ... (Your code to add the experiment links dynamically will go here) ...
-            // Example:
+            // Add experiment links dynamically (example)
             const experimentLinksDiv = document.getElementById('experimentLinks');
+
+            // Example 1: Hardcoded Links (Replace with your actual links)
             const link1 = document.createElement('a');
             link1.href = "your_experiment_link_1.html"; // Replace with your actual link
             link1.textContent = "Experiment 1";
             experimentLinksDiv.appendChild(link1);
 
-            // Add more links as needed
+            const link2 = document.createElement('a');
+            link2.href = "your_experiment_link_2.html"; // Replace with your actual link
+            link2.textContent = "Experiment 2";
+            experimentLinksDiv.appendChild(link2);
+
+
+            // Example 2: Dynamically create links from an array (replace with your data)
+            const experimentUrls = [
+                { url: "your_experiment_link_3.html", text: "Experiment 3" },
+                { url: "your_experiment_link_4.html", text: "Experiment 4" },
+                // ... more links
+            ];
+
+            experimentUrls.forEach(exp => {
+                const link = document.createElement('a');
+                link.href = exp.url;
+                link.textContent = exp.text;
+                experimentLinksDiv.appendChild(link);
+            });
+
+
+
         }
     </script>
 
