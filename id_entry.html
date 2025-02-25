@@ -5,86 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Participant ID Entry</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            padding: 20px;
-            background-color: #f4f4f9;
-            display: flex; /* Center content vertically and horizontally */
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh; /* Ensure full viewport height */
-            margin: 0; /* Remove default margins */
-        }
-
-        .container {
-            max-width: 400px;
-            padding: 20px;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        h1 {
-            text-align: center;
-            margin-bottom: 20px; /* Add space below the heading */
-        }
-
-        input {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            box-sizing: border-box; /* Include padding in width */
-        }
-
-        button {
-            width: 100%;
-            padding: 10px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.3s ease; /* Smooth hover effect */
-        }
-
-        button:hover {
-            background-color: #45a049;
-        }
-
-        .error {
-            color: red;
-            text-align: center;
-            margin-top: 10px; /* Add space above the error message */
-        }
+        /* ... (your CSS styles) ... */
     </style>
 </head>
 <body>
-
     <div class="container">
         <h1>Enter Participant ID</h1>
         <input type="text" id="participant-id" placeholder="Enter Participant ID (e.g., AB123)" pattern="[a-zA-Z]{2}[0-9]{3}" required>
         <button onclick="redirectToExperiment()">Start Experiment</button>
-        <p id="error-message" class="error" style="display:none;">Please enter a valid Participant ID.</p>
+        <p id="error-message" class="error" style="display:none;">Please enter a valid Participant ID (2 letters followed by 3 numbers).</p>
     </div>
 
     <script>
+        // Browser Check (Chrome) - Stricter Version
+        if (!navigator.userAgent.includes('Chrome')) {
+            alert("Please use Google Chrome to access this page.");
+            window.location.href = "chrome_required.html"; // Redirect to the Chrome required page
+            throw new Error("Chrome Required"); // Stop further script execution
+        }
+
         function redirectToExperiment() {
             const participantID = document.getElementById('participant-id').value;
 
-            if (participantID) {
-                localStorage.setItem('participantId', participantID);
-                window.location.href = "exp_link.html";
-            } else {
+            // Validate ID format (2 letters followed by 3 numbers)
+            const regex = /^[a-zA-Z]{2}[0-9]{3}$/;
+            if (!regex.test(participantID)) {
                 document.getElementById('error-message').style.display = 'block';
+                return; // Stop if ID is invalid
+            }
+
+            if (participantID) { // Check if ID is not empty
+                localStorage.setItem('participantId', participantID); // Store ID in localStorage
+                window.location.href = "exp_link.html"; // Redirect to experiment page
+            } else {
+                document.getElementById('error-message').style.display = 'block'; // Show error if ID is empty
             }
         }
 
+        // Hide error message when user types
         document.getElementById('participant-id').addEventListener('input', () => {
             document.getElementById('error-message').style.display = 'none';
         });
     </script>
 
 </body>
+</html>
 </html>
