@@ -5,7 +5,84 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Experiment Links</title>
     <style>
-        /* ... (your CSS styles remain the same) ... */
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        .link-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .link-container a {
+            text-decoration: none;
+            background-color: #E03A3E; /* Red */
+            color: white;
+            padding: 10px 20px;
+            margin: 10px;
+            border-radius: 4px;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+            display: inline-block;
+        }
+        .link-container a:hover {
+            background-color: #C0292D; /* Darker red on hover */
+        }
+        @media (max-width: 400px) {
+            .link-container a {
+                font-size: 14px;
+                padding: 8px 16px;
+            }
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .header h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        .header p {
+            font-style: italic;
+            color: #777;
+        }
+        footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: #f0f0f0;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between; /* This was missing! */
+            align-items: center;
+        }
+        .footer-left, .footer-right {
+            text-align: center;
+        }
+        .footer-right {
+            margin-right: 30px; /* Consistent margin with id_entry.html */
+        }
+        .footer-left img, .footer-right img {
+            max-width: 100px;
+            height: auto;
+            display: block;
+            margin: 0 auto 5px;
+        }
+        @media (max-width: 600px) {
+            footer {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .footer-left, .footer-right {
+                margin-bottom: 10px;
+            }
+        }
     </style>
 </head>
 <body>
