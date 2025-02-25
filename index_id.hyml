@@ -51,27 +51,27 @@
     <h1>Enter Participant ID</h1>
 
     <div class="container">
-        <input type="text" id="participant-id" placeholder="Enter Participant ID (e.g., AB123)" />
+        <input type="text" id="participant-id" placeholder="Enter Participant ID (e.g., AB123)" pattern="[a-zA-Z]{2}[0-9]{3}" required>
         <button onclick="redirectToExperiment()">Start Experiment</button>
-        <p id="error-message" class="error" style="display:none;">Please enter a valid Participant ID in the format: two letters followed by three numbers (e.g., AB123).</p>
+        <p id="error-message" class="error" style="display:none;">Please enter a valid Participant ID.</p>
     </div>
 
     <script>
         function redirectToExperiment() {
             var participantID = document.getElementById('participant-id').value;
 
-            // Regex to validate two letters followed by three numbers
-            var regex = /^[A-Za-z]{2}\d{3}$/;
-
-            if (regex.test(participantID)) {
-                // Redirect to the experiment link with the participant ID
-                var expLink = "exp_link.html?participant_id=" + encodeURIComponent(participantID);
-                window.location.href = expLink;
+            if (participantID) {
+                localStorage.setItem('participantId', participantID);
+                window.location.href = "exp_link.html";
             } else {
-                // Show error message if the ID doesn't match the pattern
                 document.getElementById('error-message').style.display = 'block';
             }
         }
+
+        document.getElementById('participant-id').addEventListener('input', function() {
+            document.getElementById('error-message').style.display = 'none';
+        });
+
     </script>
 
 </body>
