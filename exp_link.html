@@ -90,36 +90,39 @@
 </head>
 <body> <script>
         if (typeof window.chrome === 'undefined' || navigator.userAgent.includes('Edg')) {
-            alert("Please use Google Chrome to access this page.");
-            window.location.href = "chrome_required.html";
-            throw new Error("Chrome Required");
+        alert("Please use Google Chrome to access this page.");
+        window.location.href = "chrome_required.html";
+        throw new Error("Chrome Required");
+    }
+
+    const storedId = localStorage.getItem('participantId');
+
+    if (!storedId) {
+        alert("Participant ID not found. Please enter your ID.");
+        window.location.href = "id_entry.html";
+    } else {
+        // Create header dynamically
+        const header = document.createElement('div');
+        header.className = 'header';
+        header.innerHTML = `<h1>Experimental Links</h1><p>Please proceed to experiments as directed and do not move ahead.</p>`;
+        document.body.appendChild(header);
+
+        // Create link container dynamically
+        const linkContainer = document.createElement('div');
+        linkContainer.className = 'link-container';
+        linkContainer.id = 'experimentLinks';
+        document.body.appendChild(linkContainer);
+
+        // Function to create a link (Corrected to pass ID as query parameter)
+        function createExperimentLink(experimentName, experimentUrl) {
+            const link = document.createElement('a');
+            const urlWithId = `${experimentUrl}?participantId=${encodeURIComponent(storedId)}`; // Add ID to URL
+            link.href = `redirect.html?experiment=${encodeURIComponent(urlWithId)}`; // Redirect to redirect.html
+            link.textContent = experimentName;
+            link.target = "_blank";
+            linkContainer.appendChild(link);
         }
-        const storedId = localStorage.getItem('participantId');
 
-        if (!storedId) {
-            alert("Participant ID not found. Please enter your ID.");
-            window.location.href = "id_entry.html";
-        } else {
-            
-            // Create header dynamically
-            const header = document.createElement('div');
-            header.className = 'header';
-            header.innerHTML = `<h1>Experimental Links</h1><p>Please proceed to experiments as directed and do not move ahead.</p>`;
-            document.body.appendChild(header);
-                
-            // Prefill the ID if it's stored
-            const idInput = document.createElement('input'); // Create a hidden input field
-            idInput.type = 'hidden'; // Make it hidden
-            idInput.name = 'participantId'; // Give it a name (important for form submission)
-            idInput.value = storedId; // Set its value to the stored ID
-            document.body.appendChild(idInput); // Add it to the page (but it won't be visible);
-
-            
-            // Create link container dynamically
-            const linkContainer = document.createElement('div');
-            linkContainer.className = 'link-container';
-            linkContainer.id = 'experimentLinks';
-            document.body.appendChild(linkContainer);
 
             // Add experiment links dynamically
             const experimentLinksDiv = document.getElementById('experimentLinks');
