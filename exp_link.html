@@ -97,16 +97,27 @@
 
         const storedId = localStorage.getItem('participantId');
 
+        const storedId = localStorage.getItem('participantId');
+
         if (!storedId) {
             alert("Participant ID not found. Please enter your ID.");
             window.location.href = "id_entry.html";
         } else {
+            
             // Create header dynamically
             const header = document.createElement('div');
             header.className = 'header';
             header.innerHTML = `<h1>Experimental Links</h1><p>Please proceed to experiments as directed and do not move ahead.</p>`;
             document.body.appendChild(header);
+                
+            // Prefill the ID if it's stored
+            const idInput = document.createElement('input'); // Create a hidden input field
+            idInput.type = 'hidden'; // Make it hidden
+            idInput.name = 'participantId'; // Give it a name (important for form submission)
+            idInput.value = storedId; // Set its value to the stored ID
+            document.body.appendChild(idInput); // Add it to the page (but it won't be visible);
 
+            
             // Create link container dynamically
             const linkContainer = document.createElement('div');
             linkContainer.className = 'link-container';
