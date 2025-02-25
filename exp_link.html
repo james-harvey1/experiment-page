@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Experiment Links</title>
-    <style>
+        <style>
         body {
             font-family: Arial, sans-serif;
             padding: 20px;
@@ -36,36 +36,36 @@
 </head>
 <body>
 
-    <h1>Welcome, Participant</h1>
-    <p>Please choose one of the following experiment links to proceed:</p>
-
-    <div class="link-container">
-        <!-- Example experiment links -->
-        <a href="#" id="link1">Experiment 1</a>
-        <a href="#" id="link2">Experiment 2</a>
-        <a href="#" id="link3">Experiment 3</a>
-    </div>
-
     <script>
-        // Function to get the participant ID from the URL query string
-        function getQueryParam(name) {
-            var urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get(name);
+        // Browser Check (Chrome)
+        if (!navigator.userAgent.includes('Chrome')) {
+            alert("Please use Google Chrome to access this page.");
+            // Or redirect: window.location.href = "chrome_required.html";
         }
 
-        // Extract the participant ID from the URL
-        var participantID = getQueryParam("participant_id");
+        const storedId = localStorage.getItem('participantId');
 
-        // Ensure the participant ID is valid
-        if (participantID) {
-            // Append the participant ID to all experiment links
-            var experimentBaseUrl = "https://www.pcibex.net/experiment_url_here"; // Replace with actual base URL
-            document.getElementById("link1").href = experimentBaseUrl + "?participant_id=" + encodeURIComponent(participantID);
-            document.getElementById("link2").href = experimentBaseUrl + "?participant_id=" + encodeURIComponent(participantID);
-            document.getElementById("link3").href = experimentBaseUrl + "?participant_id=" + encodeURIComponent(participantID);
+        if (!storedId) {
+            alert("Participant ID not found. Please enter your ID.");
+            window.location.href = "id_entry.html";
         } else {
-            // If no valid participant ID, display an error
-            document.body.innerHTML = "<h1>Error: No Participant ID Found</h1><p>Please go back and enter a valid Participant ID.</p>";
+            document.write(`<h1>Welcome, Participant ${storedId}</h1>`);
+            document.write("<p>Please choose one of the following experiment links to proceed:</p>");
+            document.write('<div class="link-container" id="experimentLinks"></div>');
+
+            const experimentLinksDiv = document.getElementById('experimentLinks');
+            const experimentBaseUrl = "https://www.pcibex.net/experiment_url_here"; // **REPLACE THIS WITH YOUR ACTUAL URL**
+            const numExperiments = 3;
+
+            for (let i = 1; i <= numExperiments; i++) {
+                const link = document.createElement('a');
+                link.href = `${experimentBaseUrl}?participant_id=${encodeURIComponent(storedId)}`;
+                link.textContent = `Experiment ${i}`;
+                link.target = '_blank';
+                link.rel = "noopener noreferrer";
+                experimentLinksDiv.appendChild(link);
+                experimentLinksDiv.appendChild(document.createElement('br'));
+            }
         }
     </script>
 
