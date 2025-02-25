@@ -9,25 +9,35 @@
             font-family: Arial, sans-serif;
             padding: 20px;
             background-color: #f4f4f9;
+            display: flex; /* Center content vertically and horizontally */
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; /* Ensure full viewport height */
+            margin: 0; /* Remove default margins */
         }
-        h1 {
-            text-align: center;
-        }
+
         .container {
             max-width: 400px;
-            margin: 0 auto;
             padding: 20px;
             background-color: white;
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px; /* Add space below the heading */
+        }
+
         input {
             width: 100%;
             padding: 10px;
             margin: 10px 0;
             border: 1px solid #ddd;
             border-radius: 4px;
+            box-sizing: border-box; /* Include padding in width */
         }
+
         button {
             width: 100%;
             padding: 10px;
@@ -36,21 +46,24 @@
             border: none;
             border-radius: 4px;
             cursor: pointer;
+            transition: background-color 0.3s ease; /* Smooth hover effect */
         }
+
         button:hover {
             background-color: #45a049;
         }
+
         .error {
             color: red;
             text-align: center;
+            margin-top: 10px; /* Add space above the error message */
         }
     </style>
 </head>
 <body>
 
-    <h1>Enter Participant ID</h1>
-
     <div class="container">
+        <h1>Enter Participant ID</h1>
         <input type="text" id="participant-id" placeholder="Enter Participant ID (e.g., AB123)" pattern="[a-zA-Z]{2}[0-9]{3}" required>
         <button onclick="redirectToExperiment()">Start Experiment</button>
         <p id="error-message" class="error" style="display:none;">Please enter a valid Participant ID.</p>
@@ -58,7 +71,7 @@
 
     <script>
         function redirectToExperiment() {
-            var participantID = document.getElementById('participant-id').value;
+            const participantID = document.getElementById('participant-id').value;
 
             if (participantID) {
                 localStorage.setItem('participantId', participantID);
@@ -68,10 +81,9 @@
             }
         }
 
-        document.getElementById('participant-id').addEventListener('input', function() {
+        document.getElementById('participant-id').addEventListener('input', () => {
             document.getElementById('error-message').style.display = 'none';
         });
-
     </script>
 
 </body>
