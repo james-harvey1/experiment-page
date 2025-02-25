@@ -5,79 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Experiment Links</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            padding: 20px;
-            background-color: #f4f4f9;
-        }
-
-        h1 {
-            text-align: center;
-        }
-
-        .link-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-top: 20px;
-        }
-
-        .link-container a {
-            text-decoration: none;
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            margin: 10px;
-            border-radius: 4px;
-            font-size: 16px;
-            transition: background-color 0.3s ease;
-            display: inline-block; /* Prevent line break between icon and text */
-        }
-
-        .link-container a:hover {
-            background-color: #45a049;
-        }
-
-        /* Responsive adjustments */
-        @media (max-width: 400px) {
-            .link-container a {
-                font-size: 14px; /* Smaller font on smaller screens */
-                padding: 8px 16px; /* Smaller padding */
-            }
-        }
+        /* ... (your CSS styles) ... */
     </style>
 </head>
 <body>
 
     <script>
-        // Browser Check (Chrome)
+        // Browser Check (Chrome) - Stricter Version
         if (!navigator.userAgent.includes('Chrome')) {
             alert("Please use Google Chrome to access this page.");
-            // Or redirect: window.location.href = "chrome_required.html";
+            window.location.href = "chrome_required.html"; // Redirect
+            throw new Error("Chrome Required"); // Stop execution
         }
 
-        const storedId = localStorage.getItem('participantId');
+        const storedId = localStorage.getItem('participantId'); // Get ID from localStorage
 
-        if (!storedId) {
+        if (!storedId) { // Check if ID is present
             alert("Participant ID not found. Please enter your ID.");
-            window.location.href = "id_entry.html";
+            window.location.href = "id_entry.html"; // Redirect to ID entry page
         } else {
-            document.write(`<h1>Welcome, Participant ${storedId}</h1>`);
+            document.write(`<h1>Welcome, Participant ${storedId}</h1>`); // Display welcome message
             document.write("<p>Please choose one of the following experiment links to proceed:</p>");
-            document.write('<div class="link-container" id="experimentLinks"></div>');
+            document.write('<div class="link-container" id="experimentLinks"></div>'); // Container for links
 
             const experimentLinksDiv = document.getElementById('experimentLinks');
-            const experimentBaseUrl = "https://www.pcibex.net/experiment_url_here"; // **REPLACE THIS WITH YOUR ACTUAL URL**
+            const experimentBaseUrl = "https://www.pcibex.net/experiment_url_here"; // **REPLACE WITH YOUR ACTUAL URL**
             const numExperiments = 3;
 
+            // Generate experiment links dynamically
             for (let i = 1; i <= numExperiments; i++) {
                 const link = document.createElement('a');
-                link.href = `${experimentBaseUrl}?participant_id=${encodeURIComponent(storedId)}`;
+                link.href = `${experimentBaseUrl}?participant_id=${encodeURIComponent(storedId)}`; // Add ID as query parameter
                 link.textContent = `Experiment ${i}`;
-                link.target = '_blank';
-                link.rel = "noopener noreferrer";
+                link.target = '_blank'; // Open in new tab
+                link.rel = "noopener noreferrer"; // Security best practice
                 experimentLinksDiv.appendChild(link);
-                experimentLinksDiv.appendChild(document.createElement('br'));
+                experimentLinksDiv.appendChild(document.createElement('br')); // Add line break
             }
         }
     </script>
