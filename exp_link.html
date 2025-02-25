@@ -115,12 +115,17 @@
             // Add experiment links dynamically (example)
             const experimentLinksDiv = document.getElementById('experimentLinks');
 
-            // Example 1: Hardcoded Links (Replace with your actual links)
-            const link1 = document.createElement('a');
-            link1.href = "your_experiment_link_1.html"; // Replace with your actual link
-            link1.textContent = "Experiment 1";
-            experimentLinksDiv.appendChild(link1);
+            // URL encode the stored ID
+            const encodedId = encodeURIComponent(storedId);
 
+            // Processing Speed Experiment Link
+            const processingSpeedLink = document.createElement('a');
+            processingSpeedLink.href = `https://farm.pcibex.net/r/ZszkxV/experiment.html?participantID=${encodedId}`;
+            processingSpeedLink.textContent = "Processing Speed Experiment";
+            experimentLinksDiv.appendChild(processingSpeedLink);
+
+            // Add more links as needed (following the same pattern)
+            // Example:
             const link2 = document.createElement('a');
             link2.href = "your_experiment_link_2.html"; // Replace with your actual link
             link2.textContent = "Experiment 2";
