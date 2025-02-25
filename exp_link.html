@@ -91,7 +91,7 @@
 <body>
 
     <script>
-        if (!navigator.userAgent.includes('Chrome')) {
+        if (typeof window.chrome === 'undefined') {
             alert("Please use Google Chrome to access this page.");
             window.location.href = "chrome_required.html";
             throw new Error("Chrome Required");
