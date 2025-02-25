@@ -116,13 +116,13 @@
         // Function to create a link (Corrected to pass ID as query parameter)
         function createExperimentLink(experimentName, experimentUrl) {
             const link = document.createElement('a');
-            const urlWithId = `${experimentUrl}?participantId=${encodeURIComponent(storedId)}`; // Add ID to URL
-            link.href = `redirect.html?experiment=${encodeURIComponent(urlWithId)}`; // Redirect to redirect.html
+            // Correct URL construction:
+            const experimentURLWithID = `${experimentUrl}?participantId=${encodeURIComponent(storedId)}`;
+            link.href = `redirect.html?experiment=${encodeURIComponent(experimentURLWithID)}`;
             link.textContent = experimentName;
             link.target = "_blank";
             linkContainer.appendChild(link);
         }
-
 
             // Add experiment links dynamically
             const experimentLinksDiv = document.getElementById('experimentLinks');
