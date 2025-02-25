@@ -115,35 +115,20 @@
             // Add experiment links dynamically
             const experimentLinksDiv = document.getElementById('experimentLinks');
 
-            // URL encode the stored ID
-            const encodedId = encodeURIComponent(storedId);
-
             // Processing Speed Experiment Link (Corrected URL format)
             const processingSpeedLink = document.createElement('a');
-            processingSpeedLink.href = `https://farm.pcibex.net/r/ZszkxV/experiment.html?id=${encodedId}`; // Correct format: ?id=value
+            const processingSpeedUrl = "https://farm.pcibex.net/r/ZszkxV/experiment.html"; // Your PCIbex URL
+            processingSpeedLink.href = `redirect.html?experiment=${encodeURIComponent(processingSpeedUrl)}`;
             processingSpeedLink.textContent = "Processing Speed Experiment";
             experimentLinksDiv.appendChild(processingSpeedLink);
 
-            // Example: Add more links as needed (following the same pattern)
+            // Example for another link:
             const link2 = document.createElement('a');
-            link2.href = "your_experiment_link_2.html"; // Replace with your actual link
+            const link2Url = "https://another-pcibex-experiment.com/experiment2.html"; // Another PCIbex URL
+            link2.href = `redirect.html?experiment=${encodeURIComponent(link2Url)}`;
             link2.textContent = "Experiment 2";
             experimentLinksDiv.appendChild(link2);
 
-
-            // Example 2: Dynamically create links from an array (replace with your data)
-            const experimentUrls = [
-                { url: "your_experiment_link_3.html", text: "Experiment 3" },
-                { url: "your_experiment_link_4.html", text: "Experiment 4" },
-                // ... more links
-            ];
-
-            experimentUrls.forEach(exp => {
-                const link = document.createElement('a');
-                link.href = exp.url;
-                link.textContent = exp.text;
-                experimentLinksDiv.appendChild(link);
-            });
         }
     </script>
 
