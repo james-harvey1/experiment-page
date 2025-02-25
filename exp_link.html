@@ -8,19 +8,22 @@
         body {
             font-family: Arial, sans-serif;
             padding: 20px;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
         h1 {
             text-align: center;
         }
         .link-container {
             display: flex;
-            flex-direction: column;
-            align-items: center;
+            flex-wrap: wrap;
+            justify-content: center;
             margin-top: 20px;
         }
         .link-container a {
             text-decoration: none;
-            background-color: #E03A3E; /* Red */
+            background-color: #E03A3E;
             color: white;
             padding: 10px 20px;
             margin: 10px;
@@ -28,14 +31,16 @@
             font-size: 16px;
             transition: background-color 0.3s ease;
             display: inline-block;
+            width: calc(50% - 20px); /* Two columns with margin adjustment */
+            box-sizing: border-box;
+            text-align: center;
         }
         .link-container a:hover {
-            background-color: #C0292D; /* Darker red on hover */
+            background-color: #C0292D;
         }
-        @media (max-width: 400px) {
+        @media (max-width: 600px) {
             .link-container a {
-                font-size: 14px;
-                padding: 8px 16px;
+                width: calc(100% - 20px); /* Single column on smaller screens */
             }
         }
         .header {
@@ -51,21 +56,19 @@
             color: #777;
         }
         footer {
-            position: fixed;
-            left: 0;
-            bottom: 0;
+            margin-top: auto;
             width: 100%;
             background-color: #f0f0f0;
             padding: 10px;
             display: flex;
-            justify-content: space-between; /* Important for spacing */
+            justify-content: space-between;
             align-items: center;
         }
         .footer-left, .footer-right {
             text-align: center;
         }
         .footer-right {
-            margin-right: 30px; /* Consistent margin with id_entry.html */
+            margin-right: 30px;
         }
         .footer-left img, .footer-right img {
             max-width: 100px;
