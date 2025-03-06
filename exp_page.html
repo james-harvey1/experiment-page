@@ -90,146 +90,163 @@
 </head>
 <body> <script>
         if (typeof window.chrome === 'undefined' || navigator.userAgent.includes('Edg')) {
-        alert("Please use Google Chrome to access this page.");
-        window.location.href = "chrome_required.html";
-        throw new Error("Chrome Required");
-    }
-
-    const storedId = localStorage.getItem('participantId');
-
-    if (!storedId) {
-        alert("Participant ID not found. Please enter your ID.");
-        window.location.href = "id_entry.html";
-    } else {
-        // Create header dynamically
-        const header = document.createElement('div');
-        header.className = 'header';
-        header.innerHTML = `<h1>Experimental Links</h1><p>Please proceed to the tasks as directed and do not move ahead.</p>`;
-        document.body.appendChild(header);
-
-        // Create link container dynamically
-        const linkContainer = document.createElement('div');
-        linkContainer.className = 'link-container';
-        linkContainer.id = 'experimentLinks';
-        document.body.appendChild(linkContainer);
-
-        // Function to create a link (Corrected to pass ID as query parameter)
-        function createExperimentLink(experimentName, experimentUrl) {
-            const link = document.createElement('a');
-            // Correct URL construction:
-            const experimentURLWithID = `${experimentUrl}?participantId=${encodeURIComponent(storedId)}`;
-            link.href = `redirect.html?experiment=${encodeURIComponent(experimentURLWithID)}`;
-            link.textContent = experimentName;
-            link.target = "_blank";
-            linkContainer.appendChild(link);
+            alert("Please use Google Chrome to access this page.");
+            window.location.href = "chrome_required.html";
+            throw new Error("Chrome Required");
         }
 
-            // Add experiment links dynamically
-            const experimentLinksDiv = document.getElementById('experimentLinks');
+        const storedId = localStorage.getItem('participantId');
 
-            // Experiment 1b
-            const exp1bLink = document.createElement('a');
-            const exp1bUrl = "https://farm.pcibex.net/r/GTkvFf/experiment.html?test=true"; 
-            exp1bLink.href = `redirect.html?experiment=${encodeURIComponent(exp1bUrl)}`;
-            exp1bLink.textContent = "Experiment 1b";
-            exp1bLink.target = "_blank";
-            experimentLinksDiv.appendChild(exp1bLink);
-            
-            // Experiment 2a
-            const exp2aLink = document.createElement('a');
-            const exp2aUrl = "https://farm.pcibex.net/r/qERGTN/experiment.html?test=true"; 
-            exp2aLink.href = `redirect.html?experiment=${encodeURIComponent(exp2aUrl)}`;
-            exp2aLink.textContent = "Experiment 2a";
-            exp2aLink.target = "_blank";
-            experimentLinksDiv.appendChild(exp2aLink);
-            
-            // Experiment 2b
-            const exp2bLink = document.createElement('a');
-            const exp2bUrl = "https://farm.pcibex.net/r/qERGTN/experiment.html?test=true"; 
-            exp2bLink.href = `redirect.html?experiment=${encodeURIComponent(exp2bUrl)}`;
-            exp2bLink.textContent = "Experiment 2b";
-            exp2bLink.target = "_blank";
-            experimentLinksDiv.appendChild(exp2bLink);
-            
-            // Experiment 3a
-            const exp3aLink = document.createElement('a');
-            const exp3aUrl = "https://farm.pcibex.net/r/jPqKCm/experiment.html?test=true"; 
-            exp3aLink.href = `redirect.html?experiment=${encodeURIComponent(exp3aUrl)}`;
-            exp3aLink.textContent = "Experiment 3a";
-            exp3aLink.target = "_blank";
-            experimentLinksDiv.appendChild(exp3aLink);
-            
-            // Experiment 4a
-            const exp4aLink = document.createElement('a');
-            const exp4aUrl = "https://farm.pcibex.net/r/Dpaxjq/experiment.html?test=true"; 
-            exp4aLink.href = `redirect.html?experiment=${encodeURIComponent(exp4aUrl)}`;
-            exp4aLink.textContent = "Experiment 4a";
-            exp4aLink.target = "_blank";
-            experimentLinksDiv.appendChild(exp4aLink);
-            
-            // Experiment 5a
-            const exp5aLink = document.createElement('a');
-            const exp5aUrl = "https://farm.pcibex.net/r/fYTRGp/experiment.html?test=true"; 
-            exp5aLink.href = `redirect.html?experiment=${encodeURIComponent(exp5aUrl)}`;
-            exp5aLink.textContent = "Experiment 5a";
-            exp5aLink.target = "_blank";
-            experimentLinksDiv.appendChild(exp5aLink);
-            
-            // Experiment 5b
-            const exp5bLink = document.createElement('a');
-            const exp5bUrl = "https://farm.pcibex.net/r/iJliGv/experiment.html?test=true"; 
-            exp5bLink.href = `redirect.html?experiment=${encodeURIComponent(exp5bUrl)}`;
-            exp5bLink.textContent = "Experiment 5b";
-            exp5bLink.target = "_blank";
-            experimentLinksDiv.appendChild(exp5bLink);
-            
-            // Experiment 5c
-            const exp5cLink = document.createElement('a');
-            const exp5cUrl = "https://farm.pcibex.net/r/GoAoHf/experiment.html?test=true";
-            exp5cLink.href = `redirect.html?experiment=${encodeURIComponent(exp5cUrl)}`;
-            exp5cLink.textContent = "Experiment 5c";
-            exp5cLink.target = "_blank";
-            experimentLinksDiv.appendChild(exp5cLink);
-            
-            // Experiment 6a
-            const exp6aLink = document.createElement('a');
-            const exp6aUrl = "https://farm.pcibex.net/r/hemKin/experiment.html?test=true"; 
-            exp6aLink.href = `redirect.html?experiment=${encodeURIComponent(exp6aUrl)}`;
-            exp6aLink.textContent = "Experiment 6a";
-            exp6aLink.target = "_blank";
-            experimentLinksDiv.appendChild(exp6aLink);
-            
-            // Experiment 6b
-            const exp6bLink = document.createElement('a');
-            const exp6bUrl = "https://farm.pcibex.net/r/tKdaIH/experiment.html?test=true"; 
-            exp6bLink.href = `redirect.html?experiment=${encodeURIComponent(exp6bUrl)}`;
-            exp6bLink.target = "_blank";
-            exp6bLink.textContent = "Experiment 6b";
-            experimentLinksDiv.appendChild(exp6bLink);
-            
-            // Experiment 6c
-            const exp6cLink = document.createElement('a');
-            const exp6cUrl = "https://farm.pcibex.net/r/IWIuff/experiment.html?test=true"; 
-            exp6cLink.href = `redirect.html?experiment=${encodeURIComponent(exp6cUrl)}`;
-            exp6cLink.target = "_blank";
-            exp6cLink.textContent = "Experiment 6c";
-            experimentLinksDiv.appendChild(exp6cLink);
-            
-            // Experiment 8            
-            const exp8Link = document.createElement('a');
-            const exp8Url = "https://farm.pcibex.net/r/tUIASj/experiment.html?test=true"; 
-            exp8Link.href = `redirect.html?experiment=${encodeURIComponent(exp8Url)}`;
-            exp8Link.textContent = "Experiment 8";
-            exp8Link.target = "_blank";
-            experimentLinksDiv.appendChild(exp8Link);    
-            
-            // Processing Speed Experiment Link (Corrected URL format)
-            const processingSpeedLink = document.createElement('a');
-            const processingSpeedUrl = "https://farm.pcibex.net/r/ZszkxV/experiment.html?test=true"; // Your PCIbex URL
-            processingSpeedLink.href = `redirect.html?experiment=${encodeURIComponent(processingSpeedUrl)}`;
-            processingSpeedLink.textContent = "Processing Speed Experiment";
-            processingSpeedLink.target = "_blank"; // Correct placement: set target of processingSpeedLink
-            experimentLinksDiv.appendChild(processingSpeedLink);
+        if (!storedId) {
+            alert("Participant ID not found. Please enter your ID.");
+            window.location.href = "id_entry.html";
+        } else {
+            // Create header dynamically
+            const header = document.createElement('div');
+            header.className = 'header';
+            header.innerHTML = `<h1>Experimental Links</h1><p>Please proceed to the tasks as directed and do not move ahead.</p>`;
+            document.body.appendChild(header);
+
+            // Create link container dynamically
+            const linkContainer = document.createElement('div');
+            linkContainer.className = 'link-container';
+            linkContainer.id = 'experimentLinks';
+            document.body.appendChild(linkContainer);
+
+            // Function to create a link (Corrected to pass ID as query parameter)
+            function createExperimentLink(experimentName, experimentUrl) {
+                const link = document.createElement('a');
+                // Correct URL construction:
+                const experimentURLWithID = `<span class="math-inline">\{experimentUrl\}?participantId\=</span>{encodeURIComponent(storedId)}`;
+                link.href = `redirect.html?experiment=${encodeURIComponent(experimentURLWithID)}`;
+                link.textContent = experimentName;
+                link.target = "_blank";
+                linkContainer.appendChild(link);
+            }
+
+                // Add experiment links dynamically
+                const experimentLinksDiv = document.getElementById('experimentLinks');
+
+                // Experiment 1b
+                const exp1bLink = document.createElement('a');
+                const exp1bUrl = "https://farm.pcibex.net/r/GTkvFf/experiment.html?test=true";
+                exp1bLink.href = `redirect.html?experiment=${encodeURIComponent(exp1bUrl)}`;
+                exp1bLink.textContent = "Experiment 1b";
+                exp1bLink.target = "_blank";
+                experimentLinksDiv.appendChild(exp1bLink);
+                    
+                // Experiment 2a
+                const exp2aLink = document.createElement('a');
+                const exp2aUrl = "https://farm.pcibex.net/r/qERGTN/experiment.html?test=true";
+                exp2aLink.href = `redirect.html?experiment=${encodeURIComponent(exp2aUrl)}`;
+                exp2aLink.textContent = "Experiment 2a";
+                exp2aLink.target = "_blank";
+                experimentLinksDiv.appendChild(exp2aLink);
+                
+                // Section break
+                experimentLinksDiv.appendChild(document.createElement('hr'));
+
+                // Experiment 2b
+                const exp2bLink = document.createElement('a');
+                const exp2bUrl = "https://farm.pcibex.net/r/qERGTN/experiment.html?test=true";
+                exp2bLink.href = `redirect.html?experiment=${encodeURIComponent(exp2bUrl)}`;
+                exp2bLink.textContent = "Experiment 2b";
+                exp2bLink.target = "_blank";
+                experimentLinksDiv.appendChild(exp2bLink);
+                
+                // Experiment 3a
+                const exp3aLink = document.createElement('a');
+                const exp3aUrl = "https://farm.pcibex.net/r/jPqKCm/experiment.html?test=true";
+                exp3aLink.href = `redirect.html?experiment=${encodeURIComponent(exp3aUrl)}`;
+                exp3aLink.textContent = "Experiment 3a";
+                exp3aLink.target = "_blank";
+                experimentLinksDiv.appendChild(exp3aLink);
+                
+                // Section break
+                experimentLinksDiv.appendChild(document.createElement('hr'));
+
+                // Experiment 4a
+                const exp4aLink = document.createElement('a');
+                const exp4aUrl = "https://farm.pcibex.net/r/Dpaxjq/experiment.html?test=true";
+                exp4aLink.href = `redirect.html?experiment=${encodeURIComponent(exp4aUrl)}`;
+                exp4aLink.textContent = "Experiment 4a";
+                exp4aLink.target = "_blank";
+                experimentLinksDiv.appendChild(exp4aLink);
+                
+                // Experiment 5a
+                const exp5aLink = document.createElement('a');
+                const exp5aUrl = "https://farm.pcibex.net/r/fYTRGp/experiment.html?test=true";
+                exp5aLink.href = `redirect.html?experiment=${encodeURIComponent(exp5aUrl)}`;
+                exp5aLink.textContent = "Experiment 5a";
+                exp5aLink.target = "_blank";
+                experimentLinksDiv.appendChild(exp5aLink);
+                
+                // Section break
+                experimentLinksDiv.appendChild(document.createElement('hr'));
+
+                // Experiment 5b
+                const exp5bLink = document.createElement('a');
+                const exp5bUrl = "https://farm.pcibex.net/r/iJliGv/experiment.html?test=true";
+                exp5bLink.href = `redirect.html?experiment=${encodeURIComponent(exp5bUrl)}`;
+                exp5bLink.textContent = "Experiment 5b";
+                exp5bLink.target = "_blank";experimentLinksDiv.appendChild(exp5bLink);
+                
+                // Experiment 5c
+                const exp5cLink = document.createElement('a');
+                const exp5cUrl = "https://farm.pcibex.net/r/GoAoHf/experiment.html?test=true";
+                exp5cLink.href = `redirect.html?experiment=${encodeURIComponent(exp5cUrl)}`;
+                exp5cLink.textContent = "Experiment 5c";
+                exp5cLink.target = "_blank";
+                experimentLinksDiv.appendChild(exp5cLink);
+                
+                // Section break
+                experimentLinksDiv.appendChild(document.createElement('hr'));
+
+                // Experiment 6a
+                const exp6aLink = document.createElement('a');
+                const exp6aUrl = "https://farm.pcibex.net/r/hemKin/experiment.html?test=true";
+                exp6aLink.href = `redirect.html?experiment=${encodeURIComponent(exp6aUrl)}`;
+                exp6aLink.textContent = "Experiment 6a";
+                exp6aLink.target = "_blank";
+                experimentLinksDiv.appendChild(exp6aLink);
+                
+                // Experiment 6b
+                const exp6bLink = document.createElement('a');
+                const exp6bUrl = "https://farm.pcibex.net/r/tKdaIH/experiment.html?test=true";
+                exp6bLink.href = `redirect.html?experiment=${encodeURIComponent(exp6bUrl)}`;
+                exp6bLink.target = "_blank";
+                exp6bLink.textContent = "Experiment 6b";
+                experimentLinksDiv.appendChild(exp6bLink);
+                
+                // Section break
+                experimentLinksDiv.appendChild(document.createElement('hr'));
+
+                // Experiment 6c
+                const exp6cLink = document.createElement('a');
+                const exp6cUrl = "https://farm.pcibex.net/r/IWIuff/experiment.html?test=true";
+                exp6cLink.href = `redirect.html?experiment=${encodeURIComponent(exp6cUrl)}`;
+                exp6cLink.target = "_blank";
+                exp6cLink.textContent = "Experiment 6c";
+                experimentLinksDiv.appendChild(exp6cLink);
+                
+                // Experiment 8
+                const exp8Link = document.createElement('a');
+                const exp8Url = "https://farm.pcibex.net/r/tUIASj/experiment.html?test=true";
+                exp8Link.href = `redirect.html?experiment=${encodeURIComponent(exp8Url)}`;
+                exp8Link.textContent = "Experiment 8";
+                exp8Link.target = "_blank";
+                experimentLinksDiv.appendChild(exp8Link);
+                
+                // Section break
+                experimentLinksDiv.appendChild(document.createElement('hr'));
+
+                // Processing Speed Experiment Link (Corrected URL format)
+                const processingSpeedLink = document.createElement('a');
+                const processingSpeedUrl = "https://farm.pcibex.net/r/ZszkxV/experiment.html?test=true"; // Your PCIbex URL
+                processingSpeedLink.href = `redirect.html?experiment=${encodeURIComponent(processingSpeedUrl)}`;
+                processingSpeedLink.textContent = "Processing Speed Experiment";
+                processingSpeedLink.target = "_blank"; // Correct placement: set target of processingSpeedLink
+                experimentLinksDiv.appendChild(processingSpeedLink);
 
 
         }
