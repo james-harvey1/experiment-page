@@ -7,12 +7,12 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            display: flex; /* Enable flexbox */
-            flex-direction: column; /* Stack elements vertically */
-            justify-content: center; /* Center horizontally */
-            align-items: center; /* Center vertically */
-            min-height: 100vh; /* Ensure full viewport height */
-            margin: 0; /* Remove default body margin */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
         }
         .link-container {
             width: 80%;
@@ -20,6 +20,9 @@
             background-color: #E03A3E;
             padding: 10px;
             border-radius: 4px;
+            display: flex; /* Enable flexbox for links */
+            justify-content: center; /* Space links evenly */
+            flex-wrap: wrap; /* Allow links to wrap on smaller screens */
         }
         .link-container a {
             text-decoration: none;
@@ -30,8 +33,6 @@
             border-radius: 4px;
             font-size: 16px;
             transition: background-color 0.3s ease;
-            display: inline-block;
-            width: calc(50% - 20px);
             box-sizing: border-box;
             text-align: center;
         }
@@ -41,7 +42,7 @@
         #proceedButton {
             padding: 15px 30px;
             margin-top: 20px;
-            background-color: #007bff;
+            background-color: #E03A3E; /* Updated button color */
             color: white;
             border: none;
             border-radius: 5px;
@@ -50,7 +51,7 @@
             display: none;
         }
         h1, h2 {
-            text-align: center; /* Center the headings */
+            text-align: center;
         }
     </style>
 </head>
