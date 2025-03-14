@@ -7,29 +7,29 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            display: flex; /* Enable flexbox */
-            flex-direction: column; /* Stack elements vertically */
-            justify-content: center; /* Center horizontally */
-            align-items: center; /* Center vertically */
-            min-height: 100vh; /* Ensure full viewport height */
-            margin: 0; /* Remove default body margin */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
         }
         .link-container {
-            width: 80%; /* Limit width of container */
-            margin: 20vh auto; /* Center and move lower */
-            text-align: center; /* Center the links */
+            width: 80%;
+            margin: 20px auto; /* Adjusted margin */
+            text-align: center;
         }
         .link-container a {
             text-decoration: none;
             background-color: #E03A3E;
             color: white;
-            padding: 10px 20px;
+            padding: 20px 40px; /* Increased padding */
             margin: 10px;
             border-radius: 4px;
-            font-size: 16px;
+            font-size: 1.2em; /* Increased font size */
             transition: background-color 0.3s ease;
-            display: inline-block;
-            width: calc(50% - 20px);
+            display: block; /* Stack links vertically */
+            width: auto; /* Allow links to take full width */
             box-sizing: border-box;
             text-align: center;
         }
@@ -37,18 +37,21 @@
             background-color: #C0292D;
         }
         #proceedButton {
-            padding: 15px 30px;
+            padding: 20px 40px; /* Increased padding */
             margin-top: 20px;
-            background-color: #E03A3E; /* Updated button color to red */
+            background-color: #E03A3E;
             color: white;
             border: none;
             border-radius: 5px;
-            font-size: 18px;
+            font-size: 1.2em; /* Increased font size */
             cursor: pointer;
             display: none;
         }
         h1, h2 {
-            text-align: center; /* Center the headings */
+            text-align: center;
+        }
+        h2 {
+            font-size: 1.2em; /* Match subtitle font size */
         }
     </style>
 </head>
