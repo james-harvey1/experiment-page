@@ -10,29 +10,39 @@
             text-align: center;
             padding: 50px;
         }
-        .consent-link {
-            display: inline-block;
-            padding: 15px 30px;
-            margin: 20px;
-            background-color: #007bff; /* Blue button */
-            color: white;
+        .link-container a {
             text-decoration: none;
-            border-radius: 5px;
-            font-size: 18px;
+            background-color: #E03A3E;
+            color: white;
+            padding: 10px 20px;
+            margin: 10px;
+            border-radius: 4px;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+            display: inline-block;
+            width: calc(50% - 20px);
+            box-sizing: border-box;
+            text-align: center;
+        }
+        .link-container a:hover {
+            background-color: #C0292D;
         }
     </style>
 </head>
 <body>
     <h1>Consent Forms</h1>
     <h2>Please select the option that describes you below and complete the consent form before completing the study.</h2>
-    <a href="https://umdsurvey.umd.edu/jfe/form/SV_01wrWtOJkhbDnBY" class="consent-link" target="_blank">Consent for People with Aphasia</a>
-    <a href="https://umdsurvey.umd.edu/jfe/form/SV_6m0vii6WfY04Zq6" class="consent-link" target="_blank">Consent for Neurologically Healthy Participants</a>
+    <div class="link-container">
+        <a href="https://umdsurvey.umd.edu/jfe/form/SV_01wrWtOJkhbDnBY" target="_blank">Consent for People with Aphasia</a>
+        <a href="https://umdsurvey.umd.edu/jfe/form/SV_6m0vii6WfY04Zq6" target="_blank">Consent for Neurologically Healthy Participants</a>
+    </div>
 
     <script>
         // Transition to id_entry.html after a link is clicked
-        document.querySelectorAll('.consent-link').forEach(link => {
-            link.addEventListener('click', function() {
-                window.location.href = 'id_entry.html';
+        document.querySelectorAll('.link-container a').forEach(link => {
+            link.addEventListener('click', function(event) {
+                // Remove the following line to prevent immediate redirection
+                // window.location.href = 'id_entry.html';
             });
         });
     </script>
