@@ -9,7 +9,16 @@
 
         if (storedId && experimentUrl) {
             const encodedId = encodeURIComponent(storedId);
-            const finalUrl = `${experimentUrl}?id=${encodedId}`;
+            let finalUrl = experimentUrl; // Start with the original URL
+
+            if (!experimentUrl.includes('id=')) { // Check if 'id=' already exists
+                if (experimentUrl.includes('?')) {
+                    finalUrl += `&id=${encodedId}`; // Append with '&' if there's already a '?'
+                } else {
+                    finalUrl += `?id=${encodedId}`; // Append with '?' if there isn't
+                }
+            }
+
             window.location.href = finalUrl; // Redirect to PCIbex experiment
         } else {
             // Handle missing ID or URL (optional)
