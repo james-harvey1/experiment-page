@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consent Forms</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+        .consent-link {
+            display: inline-block;
+            padding: 15px 30px;
+            margin: 20px;
+            background-color: #007bff; /* Blue button */
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Consent Forms</h1>
+    <h2>Please select the option that describes you below and complete the consent form before completing the study.</h2>
+    <a href="https://umdsurvey.umd.edu/jfe/form/SV_01wrWtOJkhbDnBY" class="consent-link" target="_blank">Consent for People with Aphasia</a>
+    <a href="https://umdsurvey.umd.edu/jfe/form/SV_6m0vii6WfY04Zq6" class="consent-link" target="_blank">Consent for Neurologically Healthy Participants</a>
+
+    <script>
+        // Transition to id_entry.html after a link is clicked
+        document.querySelectorAll('.consent-link').forEach(link => {
+            link.addEventListener('click', function() {
+                window.location.href = 'id_entry.html';
+            });
+        });
+    </script>
+</body>
+</html>
