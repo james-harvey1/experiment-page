@@ -131,7 +131,20 @@
         });
     </script>
 </head>
-<body> <script>
+<body>
+    <footer>
+        <div class="footer-left">
+            <img src="university_of_maryland_logo.png" alt="University of Maryland Logo"> <br>
+            University of Maryland<br>
+            College Park
+        </div>
+        <div class="footer-right">
+            <img src="aphasia_research_center_logo.png" alt="Aphasia Research Center Logo"> <br>
+            Aphasia Research Center
+        </div>
+    </footer>
+
+    <script>
         if (typeof window.chrome === 'undefined' || navigator.userAgent.includes('Edg')) {
             alert("Please use Google Chrome to access this page.");
             window.location.href = "chrome_required.html";
@@ -166,6 +179,7 @@
                 link.textContent = experimentName;
                 link.target = "_blank";
                 link.setAttribute('data-experiment-id', experimentName.toLowerCase().replace(/\s+/g, ''));
+                link.className = 'experiment-link'; // Add the class here!
                 return link;
             }
 
@@ -178,10 +192,10 @@
             experimentLinksDiv.appendChild(exp1bLink);
 
             experimentLinksDiv.appendChild(document.createElement('hr'));
-            
+
             const exp6aLink = createExperimentLink("Noun Naming", "https://farm.pcibex.net/p/SBmUWj/", storedId);
             experimentLinksDiv.appendChild(exp6aLink);
-            
+
             const exp5aLink = createExperimentLink("Verb Naming", "https://farm.pcibex.net/p/WDphJN/", storedId);
             experimentLinksDiv.appendChild(exp5aLink);
 
@@ -191,53 +205,32 @@
             experimentLinksDiv.appendChild(exp2bLink);
 
             experimentLinksDiv.appendChild(document.createElement('hr'));
-        
+
             const exp4aLink = createExperimentLink("PAT Sentence Production", "https://farm.pcibex.net/p/VtFrKH/", storedId);
             experimentLinksDiv.appendChild(exp4aLink);
-            
-            experimentLinksDiv.appendChild(document.createElement('hr'));
-            
-            const exp4aLink = createExperimentLink("PAT Sentence Production", "https://farm.pcibex.net/p/VtFrKH/", storedId);
-            experimentLinksDiv.appendChild(exp4aLink);
-            
+
             experimentLinksDiv.appendChild(document.createElement('hr'));
 
             const exp6bLink = createExperimentLink("(Noun) Picture-Word Verification", "https://farm.pcibex.net/p/RMTEOV/", storedId);
             experimentLinksDiv.appendChild(exp6bLink);
-            
+
             const exp5bLink = createExperimentLink("(Verb) Picture-Word Verification", "https://farm.pcibex.net/p/XFjnFN/", storedId);
             experimentLinksDiv.appendChild(exp5bLink);
 
             const exp2aLink = createExperimentLink("Primed Lexical Decision", "https://farm.pcibex.net/p/OnDfAd/", storedId);
             experimentLinksDiv.appendChild(exp2aLink);
-            
+
             experimentLinksDiv.appendChild(document.createElement('hr'));
 
             const exp3aLink = createExperimentLink("Primed Word Production", "https://farm.pcibex.net/p/sEVvDH/", storedId);
             experimentLinksDiv.appendChild(exp3aLink);
-            
+
             const exp6cLink = createExperimentLink("Object Repetition", "https://farm.pcibex.net/p/xGdlGF/", storedId);
             experimentLinksDiv.appendChild(exp6cLink);
-            
+
             const exp5cLink = createExperimentLink("Verb Repetition", "https://farm.pcibex.net/p/uzpaWn/", storedId);
             experimentLinksDiv.appendChild(exp5cLink);
-
-            
-            
         }
     </script>
-
-    <footer>
-        <div class="footer-left">
-            <img src="university_of_maryland_logo.png" alt="University of Maryland Logo"> <br>
-            University of Maryland<br>
-            College Park
-        </div>
-        <div class="footer-right">
-            <img src="aphasia_research_center_logo.png" alt="Aphasia Research Center Logo"> <br>
-            Aphasia Research Center
-        </div>
-    </footer>
-
 </body>
 </html>
