@@ -127,14 +127,47 @@
             // Add experiment links dynamically
             const experimentLinksDiv = document.getElementById('experimentLinks');
 
-            // Experiment 1b
+
+            // Processing Speed
             const exp1bLink = document.createElement('a');
-            const exp1bUrl = "https://farm.pcibex.net/r/GTkvFf/experiment.html?test=true"; 
+            const exp1bUrl = "https://farm.pcibex.net/p/fDQIaU/"; 
             exp1bLink.href = `redirect.html?experiment=${encodeURIComponent(exp1bUrl)}`;
-            exp1bLink.textContent = "Experiment 1b";
+            exp1bLink.textContent = "Processing Speed";
             exp1bLink.target = "_blank";
             experimentLinksDiv.appendChild(exp1bLink);
+
+            // Experiment 1b
+            const exp1bLink = document.createElement('a');
+            const exp1bUrl = "https://farm.pcibex.net/p/CCBLqQ/"; 
+            exp1bLink.href = `redirect.html?experiment=${encodeURIComponent(exp1bUrl)}`;
+            exp1bLink.textContent = "Elicited Sentence Production";
+            exp1bLink.target = "_blank";
+            experimentLinksDiv.appendChild(exp1bLink);
+
+            // Experiment 5a
+            const exp5aLink = document.createElement('a');
+            const exp5aUrl = "https://farm.pcibex.net/p/WDphJN/"; 
+            exp5aLink.href = `redirect.html?experiment=${encodeURIComponent(exp5aUrl)}`;
+            exp5aLink.textContent = "Action Naming";
+            exp5aLink.target = "_blank";
+            experimentLinksDiv.appendChild(exp5aLink);
+
+            // Experiment 6a
+            const exp6aLink = document.createElement('a');
+            const exp6aUrl = "https://farm.pcibex.net/p/SBmUWj/"; 
+            exp6aLink.href = `redirect.html?experiment=${encodeURIComponent(exp6aUrl)}`;
+            exp6aLink.textContent = "Object Naming";
+            exp6aLink.target = "_blank";
+            experimentLinksDiv.appendChild(exp6aLink);
             
+            // Experiment 2b
+            const exp2bLink = document.createElement('a');
+            const exp2bUrl = "https://farm.pcibex.net/p/ZIvNTy/"; 
+            exp2bLink.href = `redirect.html?experiment=${encodeURIComponent(exp2bUrl)}`;
+            exp2bLink.textContent = "Reading";
+            exp2bLink.target = "_blank";
+            experimentLinksDiv.appendChild(exp2bLink);
+
             // Experiment 2a
             const exp2aLink = document.createElement('a');
             const exp2aUrl = "https://farm.pcibex.net/r/qERGTN/experiment.html?test=true"; 
@@ -142,14 +175,6 @@
             exp2aLink.textContent = "Experiment 2a";
             exp2aLink.target = "_blank";
             experimentLinksDiv.appendChild(exp2aLink);
-            
-            // Experiment 2b
-            const exp2bLink = document.createElement('a');
-            const exp2bUrl = "https://farm.pcibex.net/r/qERGTN/experiment.html?test=true"; 
-            exp2bLink.href = `redirect.html?experiment=${encodeURIComponent(exp2bUrl)}`;
-            exp2bLink.textContent = "Experiment 2b";
-            exp2bLink.target = "_blank";
-            experimentLinksDiv.appendChild(exp2bLink);
             
             // Experiment 3a
             const exp3aLink = document.createElement('a');
@@ -167,14 +192,6 @@
             exp4aLink.target = "_blank";
             experimentLinksDiv.appendChild(exp4aLink);
             
-            // Experiment 5a
-            const exp5aLink = document.createElement('a');
-            const exp5aUrl = "https://farm.pcibex.net/r/fYTRGp/experiment.html?test=true"; 
-            exp5aLink.href = `redirect.html?experiment=${encodeURIComponent(exp5aUrl)}`;
-            exp5aLink.textContent = "Experiment 5a";
-            exp5aLink.target = "_blank";
-            experimentLinksDiv.appendChild(exp5aLink);
-            
             // Experiment 5b
             const exp5bLink = document.createElement('a');
             const exp5bUrl = "https://farm.pcibex.net/r/iJliGv/experiment.html?test=true"; 
@@ -191,13 +208,6 @@
             exp5cLink.target = "_blank";
             experimentLinksDiv.appendChild(exp5cLink);
             
-            // Experiment 6a
-            const exp6aLink = document.createElement('a');
-            const exp6aUrl = "https://farm.pcibex.net/r/hemKin/experiment.html?test=true"; 
-            exp6aLink.href = `redirect.html?experiment=${encodeURIComponent(exp6aUrl)}`;
-            exp6aLink.textContent = "Experiment 6a";
-            exp6aLink.target = "_blank";
-            experimentLinksDiv.appendChild(exp6aLink);
             
             // Experiment 6b
             const exp6bLink = document.createElement('a');
