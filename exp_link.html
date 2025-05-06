@@ -201,11 +201,20 @@
 
             experimentLinksDiv.appendChild(document.createElement('hr'));
 
+            const expMLSLink = createExperimentLink("Modified Listening Span", "", storedId);
+            experimentLinksDiv.appendChild(expMLSLink);
+            
             const exp2bLink = createExperimentLink("Reading Aloud", "https://farm.pcibex.net/p/ZIvNTy/", storedId);
             experimentLinksDiv.appendChild(exp2bLink);
 
+            const stopLink = createExperimentLink("End Session One", "", storedId);
+            experimentLinksDiv.appendChild(stopLink);
+            
             experimentLinksDiv.appendChild(document.createElement('hr'));
 
+            const exp3bLink = createExperimentLink("Word Repetion", "", storedId);
+            experimentLinksDiv.appendChild(exp3bLink);
+            
             const exp4aLink = createExperimentLink("PAT Sentence Production", "https://farm.pcibex.net/p/VtFrKH/", storedId);
             experimentLinksDiv.appendChild(exp4aLink);
 
