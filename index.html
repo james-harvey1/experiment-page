@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proceed to Study</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        #speedTestLink {
+            text-decoration: none;
+            background-color: #E03A3E;
+            color: white;
+            padding: 20px 40px;
+            border-radius: 4px;
+            font-size: 1.2em;
+            transition: background-color 0.3s ease;
+            margin-bottom: 20px;
+        }
+        #speedTestLink:hover {
+            background-color: #C0292D;
+        }
+        #proceedButton {
+            padding: 20px 40px;
+            background-color: #4CAF50; /* Green proceed button */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            cursor: pointer;
+            display: none; /* Initially hidden */
+        }
+        #proceedButton:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <a id="speedTestLink" href="https://www.speedtest.net/" target="_blank">Run Internet Speed Test (Opens in a new tab)</a>
+    <button id="proceedButton">Proceed to Study</button>
+
+    <script>
+        const speedTestLink = document.getElementById('speedTestLink');
+        const proceedButton = document.getElementById('proceedButton');
+
+        // When the page loads or is revisited, show the proceed button
+        // The assumption is that if they are back on this page, they have run the test.
+        proceedButton.style.display = 'block';
+
+        // Optional: You could add a message to guide the user
+        const message = document.createElement('p');
+        message.textContent = 'Once you have completed the speed test in the new tab, you can proceed to the study.';
+        message.style.textAlign = 'center';
+        document.body.insertBefore(message, proceedButton);
+
+        proceedButton.addEventListener('click', function() {
+            window.location.href = 'id_entry.html';
+        });
+    </script>
+</body>
+</html>
