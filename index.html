@@ -45,7 +45,7 @@
             border-radius: 5px;
             font-size: 1.2em; /* Increased font size */
             cursor: pointer;
-            display: none;
+            /* display: none; */ /* Removed this line to make the button always visible */
         }
         h1, h2 {
             text-align: center;
@@ -70,7 +70,7 @@
 
         consentLinks.forEach(link => {
             link.addEventListener('click', function() {
-                proceedButton.style.display = 'block';
+                // proceedButton.style.display = 'block'; // Removed this line
             });
         });
 
