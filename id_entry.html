@@ -95,41 +95,61 @@
     <p id="error-message" class="error" style="display:none;">Please enter a valid Participant ID (2 uppercase letters followed by 3 numbers).</p>
 </div>
 
-    <script>
-        if (!navigator.userAgent.includes('Chrome')) {
-            alert("Please use Google Chrome to access this page.");
-            window.location.href = "chrome_required.html";
-            throw new Error("Chrome Required");
+<script>
+    // Browser check: Ensures the page is accessed using Google Chrome.
+    // If not, it alerts the user and redirects to a "chrome_required.html" page.
+    if (!navigator.userAgent.includes('Chrome')) {
+        alert("Please use Google Chrome to access this page.");
+        window.location.href = "chrome_required.html";
+        throw new Error("Chrome Required");
+    }
+
+    // Input event listener for participant ID:
+    // This function runs every time the user types into the participant ID field.
+    document.getElementById('participant-id').addEventListener('input', function() {
+        let value = this.value;
+        // Converts the first two characters of the input to uppercase.
+        // The rest of the input remains unchanged.
+        if (value.length > 0) {
+            this.value = value.substring(0, 2).toUpperCase() + value.substring(2);
+        }
+        // Hides the error message if it was visible, providing a better user experience
+        // as they correct their input.
+        document.getElementById('error-message').style.display = 'none';
+    });
+
+    // Function to redirect to the experiment page:
+    // This is called when the "Start Study" button is clicked.
+    function redirectToExperiment() {
+        const participantIDInput = document.getElementById('participant-id');
+        const participantID = participantIDInput.value;
+        // Regular expression to validate the participant ID:
+        // It requires exactly two uppercase letters followed by exactly three numbers.
+        const regex = /^[A-Z]{2}[0-9]{3}$/; 
+
+        // Checks if the entered participant ID matches the required format.
+        if (!regex.test(participantID)) {
+            // If the format is invalid, displays an error message and stops the function.
+            document.getElementById('error-message').style.display = 'block';
+            return;
         }
 
-        function redirectToExperiment() {
-            const participantID = document.getElementById('participant-id').value;
-            const regex = /^[a-zA-Z]{2}[0-9]{3}$/;
-            if (!regex.test(participantID)) {
-                document.getElementById('error-message').style.display = 'block';
-                return;
-            }
+        // If validation passes:
+        // Stores the valid participant ID in the browser's local storage.
+        localStorage.setItem('participantId', participantID); 
+        // Redirects the user to the experiment link.
+        window.location.href = "exp_link.html"; 
+    }
 
-            if (participantID) {
-                localStorage.setItem('participantId', participantID); // Store ID *before* redirecting
-                window.location.href = "exp_link.html"; // Redirect *after* storing ID
-            } else {
-                document.getElementById('error-message').style.display = 'block';
-            }
-        }
+    // On page load:
+    // Checks if a participant ID was previously stored in local storage.
+    const storedId = localStorage.getItem('participantId');
+    const idInput = document.getElementById('participant-id');
 
-        document.getElementById('participant-id').addEventListener('input', () => {
-            document.getElementById('error-message').style.display = 'none';
-        });
-
-                // Check for a stored ID and pre-fill if present (runs on page load)
-        const storedId = localStorage.getItem('participantId');
-        const idInput = document.getElementById('participant-id');
-
-        if (storedId) {
-            idInput.value = storedId;
-        }
-
+    // If a stored ID is found, it pre-fills the input field with that ID.
+    if (storedId) {
+        idInput.value = storedId;
+    }
     </script>
     <footer>
         <div class="footer-left">
