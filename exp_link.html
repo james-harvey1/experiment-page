@@ -27,6 +27,19 @@
             border: 6px solid black;
             margin: 40px auto;
         }
+
+        /* NEW: Striped break line */
+        hr.striped-break {
+            border: none; /* Removes the solid black border */
+            height: 16px; /* Adjust this to make the line thicker or thinner */
+            background: repeating-linear-gradient(
+                45deg,
+                #222222,
+                #222222 15px,
+                #ffffff 15px,
+                #ffffff 30px
+            );
+        }
         .link-container a {
             text-decoration: none;
             background-color: #E03A3E;
@@ -236,6 +249,16 @@
 
             experimentLinksDiv.appendChild(document.createElement('hr'));
 
+            const MoCALink = createExperimentLink("MoCA XpressO test (Only for AN Participants)", "https://portal-us.mocacognition.com/register");
+            experimentLinksDiv.appendChild(MoCALink);
+
+            const MoCAInstructions = createExperimentLink("MoCA Login: aphasia@umd.edu, PW: Morphology6", "https://portal-us.mocacognition.com/register");
+            experimentLinksDiv.appendChild(MoCAInstructions);
+
+            const stripedHr = document.createElement('hr');
+            stripedHr.className = 'striped-break';
+            experimentLinksDiv.appendChild(stripedHr);
+
             const exp3aLink = createExperimentLink("Primed Word Production", "https://farm.pcibex.net/p/sEVvDH/", storedId);
             experimentLinksDiv.appendChild(exp3aLink);
 
@@ -245,13 +268,6 @@
             const exp5cLink = createExperimentLink("Action Repetition", "https://farm.pcibex.net/p/uzpaWn/", storedId);
             experimentLinksDiv.appendChild(exp5cLink);
 
-            experimentLinksDiv.appendChild(document.createElement('hr'));
-
-            const MoCALink = createExperimentLink("MoCA XpressO test (Only for AN Participants)", "https://portal-us.mocacognition.com/register");
-            experimentLinksDiv.appendChild(MoCALink);
-
-            const MoCAInstructions = createExperimentLink("MoCA Login: aphasia@umd.edu, PW: Morphology6", "https://portal-us.mocacognition.com/register");
-            experimentLinksDiv.appendChild(MoCAInstructions);
         }
     </script>
 </body>
