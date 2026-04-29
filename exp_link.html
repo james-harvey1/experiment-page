@@ -29,13 +29,23 @@
         }
 
         /* NEW: Striped break line */
-        hr.striped-break {
-            border: none; /* Removes the solid black border */
-            height: 16px; /* Adjust this to make the line thicker or thinner */
+       hr.striped-break {
+            /* 1. Remove top and bottom borders to allow the height to dictate thickness */
+            border-top: none;
+            border-bottom: none;
+            
+            /* 2. Add solid black caps to the ends to guarantee it always looks closed */
+            border-left: 6px solid #000000;
+            border-right: 6px solid #000000;
+            
+            /* 3. Match the exact 12px height of the plain lines (6px top + 6px bottom) */
+            height: 12px; 
+            
+            /* 4. Use pure black (#000000) for the stripes */
             background: repeating-linear-gradient(
                 45deg,
-                #222222,
-                #222222 15px,
+                #000000,
+                #000000 15px,
                 #ffffff 15px,
                 #ffffff 30px
             );
